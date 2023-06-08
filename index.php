@@ -37,16 +37,16 @@ $symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
                 </div>
             </div>
             <div class="form-group">
+                <p>Consenti ripetizioni di 1 o più caratteri</p>
                 <div class="form-check">
                     <label for="yes">
                         Si
                     </label>
-                    <input type="radio" name="yes" id="yes" value="1">
-
+                    <input type="radio" name="rep" id="yes" value="y">
                     <label for="no">
                         No
                     </label>
-                    <input type="radio" name="no" id="no" value="0">
+                    <input type="radio" name="rep" id="no" value="n">
                 </div>
             </div>
             <input type="submit" value="Genera" class="btn btn-success">
