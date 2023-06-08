@@ -1,3 +1,9 @@
+<?php
+$letters = 'abcdefghijklmnopqrstuvwxyz';
+// $UpperCaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$numbers = '0123456789';
+$symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,11 +20,11 @@
         <form action="" method="get">
             <div class="form-group">
                 <label for="lenght">Lunghezza della password</label>
-                <input type="text" name="len" id="length">
+                <input type="number" name="len" id="length" required>
             </div>
             <div class="form-check">
-                <label for="char">Caratteri</label>
-                <input type="checkbox" name="char" id="char">
+                <label for="let">Caratteri</label>
+                <input type="checkbox" name="let" id="let">
             </div>
             <div class="form-check">
                 <label for="num">Numeri</label>
@@ -33,7 +39,26 @@
         </form>
         <div class="answer">
             <?php
-            var_dump($_GET);
+            $passwordLength = (int)$_GET['len'];
+            $let = isset($_GET['let']) ? true : false;
+            $num = isset($_GET['num']) ? true : false;
+            $sym = isset($_GET['sym']) ? true : false;
+            $allChar = '';
+            if ($let) {
+                $allChar .= $letters;
+            }
+            if ($num) {
+                $allChar .= $numbers;
+            }
+            if ($sym) {
+                $allChar .= $symbols;
+            }
+            $randomPw = '';
+            for ($i = 0; $i < $passwordLength; $i++) {
+                $randomPw .= $allChar[rand(0, $passwordLength - 1)];
+            }
+            var_dump($randomPw);
+            var_dump($allChar);
             ?>
         </div>
     </div>
