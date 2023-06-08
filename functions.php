@@ -24,16 +24,18 @@ if ($passwordLength && ($let || $num || $sym)) {
         for ($i = 0; $i < $passwordLength; $i++) {
             if (strlen($allChar) != 0) {
                 $randomChar = $allChar[rand(0, strlen($allChar) - 1)];
-                var_dump($randomChar);
-                $allChar = substr($allChar, strpos($allChar, $randomChar));
+                $allChar = splice(strpos($allChar, $randomChar), $allChar);
                 // $allChar = chop($allChar, $randomChar);
                 $randomPw .= $randomChar;
-                var_dump($allChar);
             } else {
                 break;
             }
         }
     }
 
-    var_dump($randomPw);
+    echo 'Password: ' . $randomPw;
+}
+function splice($point, $string)
+{
+    return substr($string, 0, $point) . substr($string, $point + 1, strlen($string));
 }
