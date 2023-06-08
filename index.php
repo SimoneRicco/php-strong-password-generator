@@ -22,43 +22,39 @@ $symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
                 <label for="lenght">Lunghezza della password</label>
                 <input type="number" name="len" id="length" required>
             </div>
-            <div class="form-check">
-                <label for="let">Caratteri</label>
-                <input type="checkbox" name="let" id="let">
+            <div class="form-group">
+                <div class="form-check">
+                    <label for="let">Caratteri</label>
+                    <input type="checkbox" name="let" id="let">
+                </div>
+                <div class="form-check">
+                    <label for="num">Numeri</label>
+                    <input type="checkbox" name="num" id="num">
+                </div>
+                <div class="form-check">
+                    <label for="sym">Simboli</label>
+                    <input type="checkbox" name="sym" id="sym">
+                </div>
             </div>
-            <div class="form-check">
-                <label for="num">Numeri</label>
-                <input type="checkbox" name="num" id="num">
-            </div>
-            <div class="form-check">
-                <label for="sym">Simboli</label>
-                <input type="checkbox" name="sym" id="sym">
+            <div class="form-group">
+                <div class="form-check">
+                    <label for="yes">
+                        Si
+                    </label>
+                    <input type="radio" name="yes" id="yes" value="1">
+
+                    <label for="no">
+                        No
+                    </label>
+                    <input type="radio" name="no" id="no" value="0">
+                </div>
             </div>
             <input type="submit" value="Genera" class="btn btn-success">
             <input type="reset" value="Resetta" class="btn btn-danger">
         </form>
         <div class="answer">
             <?php
-            $passwordLength = (int)$_GET['len'];
-            $let = isset($_GET['let']) ? true : false;
-            $num = isset($_GET['num']) ? true : false;
-            $sym = isset($_GET['sym']) ? true : false;
-            $allChar = '';
-            if ($let) {
-                $allChar .= $letters;
-            }
-            if ($num) {
-                $allChar .= $numbers;
-            }
-            if ($sym) {
-                $allChar .= $symbols;
-            }
-            $randomPw = '';
-            for ($i = 0; $i < $passwordLength; $i++) {
-                $randomPw .= $allChar[rand(0, $passwordLength - 1)];
-            }
-            var_dump($randomPw);
-            var_dump($allChar);
+            include_once 'functions.php';
             ?>
         </div>
     </div>
